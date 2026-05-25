@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CloudAuth</title>
+        <style>
+            body{
+                width: 340px;
+                font-family: Arial, sans-serif;
+                padding: 14px;
+                background: #111;
+                color: white;
+            }
+            h2,h3{
+                margin-top: 0;
+            }
+            input,button{
+                width: 100%;
+                padding: 10px;
+                margin: 6px 0;
+                border-radius: 8px;
+                border: none;
+                box-sizing: border-box;
+            }
+            input{
+                background: #222;
+                color: white;
+                border: 1px solid #333,
+            }
+            button {
+                background: #4f46e5;
+                color: white;
+                cursor: pointer;
+                font-weight: bold;
+
+            }
+            button.secondary{
+                background: #333;
+                border: 1px solid #333;
+                padding:12px;
+                border-radius: 10px;
+                margin: 8px 0;
+            }
+            .issuer{
+                font-size: 14px;
+                opacity: 0.8;
+            }
+            .code{
+                font-size: 28px;
+                font-weight: bold;
+                letter-spacing: 4px;
+                margin-top: 6px;
+            
+            }
+            .timer{
+                font-size: 12px;
+                opacity: 0.7;
+            }
+            .status{
+                font-size: 12px;
+                color: #aaa;
+                margin-top: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="authView">
+            <h2>CloudAuth</h2>
+
+            <input id="email" type="email" placeholder="Email" />
+            <input id="password" type="password" placeholder="Login Passowrd" />
+            <button id="loginBtn">Login</button>
+            <button id="registerBtn" class="secondary">Register</button>
+        </div>
+
+        <div id="unlockView" class="hidden">
+            <h2>Unlock Vault</h2>
+            <input id="masterPassword" type="passowrd" placeholder="Master Password">
+            <button id="unlockBtn">Unlock</button>
+            <button id="createVaultBtn" class="secondary">Create new vault</button>
+        </div>
+
+        <div id="appView" class="hidden">
+            <h2>Authenticator</h2>
+            <div id="accounts"></div>
+
+            <h3>Add Account</h3>
+            <input id="issuer" placeholder="Issuer, e.g. GitHub" />
+            <input id="label" placeholder="Label, e.g. email@example.com" />
+            <input id="secret" placeholder="Base32 secret" />
+
+            <button id="addBtn">Add Account</button>
+            <button id="syncBtn" class="secondary">Sync Vault</button>
+            <button id="logoutBtn" class="secondary">Logout</button>
+        </div>
+        <div class="status" id="status"></div>
+
+        <script src="crypto.js"></script>
+        <script src="totp.js"></script>
+        <script src="api.js"></script>
+        <script src="popup.js"></script>
+    </body>
+</html>
